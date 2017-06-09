@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.high.mapper.ActivityMapper">
+
+	<insert id="insertActivity" parameterType="com.high.entity.Activity">
+		INSERT INTO t_activity (
+			activity_id,
+			categoty_id,
+			content,
+			COMMENT,
+			start_time,
+			end_time,
+			activity_location_id,
+			min_num,
+			max_num,
+			creator_id,
+			is_public,
+			creator_location_id,
+			distance)
+		VALUES(
+			#{activityId},
+			#{categotyId},
+			#{content},
+			#{comment},
+			#{startTime},
+			#{endTime},
+			#{activityLocationId},
+			#{minNum},
+			#{maxNum},
+			#{creatorId},
+			#{isPublic},
+			#{creatorLocationId},
+			#{distance});
+	</insert>
+	
+	<select id="searchAllActivity" resultType="com.high.entity.Activity">
+		SELECT * FROM t_activity
+	</select>
+
+
+	<select id="findActivityById" resultType="com.high.entity.Activity" parameterType="java.lang.String">
+		SELECT * FROM t_activity WHERE activity_id = #{id}
+	</select>
+
+	<delete id="deleteActivityById" parameterType="java.lang.String">
+		DELETE FROM t_activity WHERE activity_id= #{id};
+	</delete>
+</mapper>

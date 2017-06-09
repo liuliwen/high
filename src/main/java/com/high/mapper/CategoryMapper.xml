@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.high.mapper.CategoryMapper">
+
+	<select id="findAllTopCategoryName" resultType="string">
+		SELECT top_category FROM t_category GROUP BY top_category; 
+	</select>
+	
+	<select id="findSecCateByTopCateName" resultType="com.high.entity.Category" parameterType="string">
+		SELECT * FROM t_category WHERE top_category = #{topCategory};
+	</select>
+
+	<select id="findCategotyById" resultType="com.high.entity.Category" parameterType="java.lang.String">
+		SELECT * FROM t_category WHERE id=#{id};
+	</select>
+</mapper>

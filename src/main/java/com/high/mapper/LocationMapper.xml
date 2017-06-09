@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.high.mapper.LocationMapper">
+
+	<insert id="insertLocation" parameterType="com.high.entity.Location">
+		INSERT INTO t_location(location_id,longitude,latitude,location_description) 
+		VALUES(#{locationId},#{longitude},#{latitude},#{locationDescription});
+	</insert>
+
+	<select id="findLocationById" resultType="com.high.entity.Location" parameterType="java.lang.String">
+		SELECT * FROM t_location WHERE location_id= #{id};
+	</select>
+</mapper>

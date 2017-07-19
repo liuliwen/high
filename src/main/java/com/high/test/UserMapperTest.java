@@ -18,8 +18,9 @@ public class UserMapperTest {
 	
 	@Test
 	public void demo1(){
-		String id = "c939e479-197d-4aae-b9c9-6dc02203850f";
+		String id = "1";
 		User user = userMapper.findUserById(id);
+		System.out.println(user);
 		System.out.println(user.getUserId());
 	}
 }

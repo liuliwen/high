@@ -142,6 +142,7 @@
 				<td>
 					<form:select path="category.topCategory" id="selTopCat" cssErrorClass="errorBox" onchange="loadSecCat(this.options[this.options.selectedIndex].value)">
 					</form:select>
+					<form:errors path="category.topCategory"></form:errors>
 				</td>
 					<td>
 					<!-- onchange 函数触发，给隐藏域 categotyId赋值--> 
@@ -182,18 +183,12 @@
 				<td>开始时间</td>
 				<td><form:input id="startTime" path="startTime"
 					onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
-				<!-- 				<td><input type="text" ></td> -->
-				<!-- 				<td><input type="text" ></td> -->
-				<!-- 				<td><input type="hidden" name="startTime" ></td> -->
 			</tr>
 			<tr>
 				<!-- 用户选择，再选择日期，然后利用给 startTime 赋值 -->
 				<td>结束时间</td>
 				<td><form:input path="endTime"
 					onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/></td>
-				<!-- 				<td><input type="text" placeholder="日期"></td> -->
-				<!-- 				<td><input type="text" placeholder="时间"></td> -->
-				<!-- 				<td><input type="hidden" name="endTime" ></td> -->
 			</tr>
 			<tr>
 				<td colspan='3'><textarea rows="5" name="comment">备注</textarea></td>

@@ -7,7 +7,7 @@ import java.util.List;
 public class Activity {
     private String activityId;
 
-    private String categotyId;
+    private String categoryId;
 
     private String content;
 
@@ -19,15 +19,13 @@ public class Activity {
 
     private String activityLocationId;
 
-    private Integer minNum;
-
     private Integer maxNum;
 
     private String creatorId;
 
     private Boolean isPublic;
 
-    private String creatorLocationId;
+    private Date deadline;
 
     private Double distance;
     
@@ -36,60 +34,28 @@ public class Activity {
     private List<User> participate;
     private Category category;
 
-    public List<User> getParticipate() {
-        return participate;
+    public Date getDeadline() {
+        return deadline;
     }
 
-    public void setParticipate(List<User> participate) {
-        this.participate = participate;
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public Boolean getPublic() {
-        return isPublic;
-    }
-
-    public void setPublic(Boolean aPublic) {
-        isPublic = aPublic;
-    }
-
-    public Location getActivityLocation() {
-		return activityLocation;
-	}
-
-	public void setActivityLocation(Location activityLocation) {
-		this.activityLocation = activityLocation;
-	}
-
-    public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public String getActivityId() {
+    public String getActivityId() {
         return activityId;
     }
 
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public void setActivityId(String activityId) {
-        this.activityId = activityId == null ? null : activityId.trim();
-    }
-
-    public String getCategotyId() {
-        return categotyId;
-    }
-
-    public void setCategotyId(String categotyId) {
-        this.categotyId = categotyId == null ? null : categotyId.trim();
+        this.activityId = activityId;
     }
 
     public String getContent() {
@@ -97,7 +63,7 @@ public class Activity {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public String getComment() {
@@ -105,7 +71,7 @@ public class Activity {
     }
 
     public void setComment(String comment) {
-        this.comment = comment == null ? null : comment.trim();
+        this.comment = comment;
     }
 
     public Date getStartTime() {
@@ -129,15 +95,7 @@ public class Activity {
     }
 
     public void setActivityLocationId(String activityLocationId) {
-        this.activityLocationId = activityLocationId == null ? null : activityLocationId.trim();
-    }
-
-    public Integer getMinNum() {
-        return minNum;
-    }
-
-    public void setMinNum(Integer minNum) {
-        this.minNum = minNum;
+        this.activityLocationId = activityLocationId;
     }
 
     public Integer getMaxNum() {
@@ -153,31 +111,68 @@ public class Activity {
     }
 
     public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId == null ? null : creatorId.trim();
+        this.creatorId = creatorId;
     }
 
-    public Boolean getIsPublic() {
-		return isPublic;
-	}
-
-	public void setIsPublic(Boolean isPublic) {
-		this.isPublic = isPublic;
-	}
-
-	public String getCreatorLocationId() {
-        return creatorLocationId;
+    public Boolean getPublic() {
+        return isPublic;
     }
 
-    public void setCreatorLocationId(String creatorLocationId) {
-        this.creatorLocationId = creatorLocationId == null ? null : creatorLocationId.trim();
+    public void setPublic(Boolean aPublic) {
+        isPublic = aPublic;
     }
 
-	public Double getDistance() {
-		return distance;
-	}
+    public Double getDistance() {
+        return distance;
+    }
 
-	public void setDistance(Double distance) {
-		this.distance = distance;
-	}
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
 
+    public Location getActivityLocation() {
+        return activityLocation;
+    }
+
+    public void setActivityLocation(Location activityLocation) {
+        this.activityLocation = activityLocation;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public List<User> getParticipate() {
+        return participate;
+    }
+
+    public void setParticipate(List<User> participate) {
+        this.participate = participate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "content='" + content + '\'' +
+                ", comment='" + comment + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", maxNum=" + maxNum +
+                ", activityLocation=" + activityLocation +
+                ", creator=" + creator +
+                ", category=" + category +
+                '}';
+    }
 }

@@ -16,7 +16,7 @@
             //利用ajax从数据库中删除
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/activity/deleteParticipateById?activityId="+activityId+"&userId="+userId,
+                url:"${pageContext.request.contextPath}/activity/deleteParticipateById.do?activityId="+activityId+"&userId="+userId,
                 dataType:"json",
                 success: function (result) {
                     if(result==true){

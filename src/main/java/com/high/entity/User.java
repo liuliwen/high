@@ -3,26 +3,36 @@ package com.high.entity;
 public class User {
     private String userId;
 
-    private String userName;
+    private String nickName;
+
+    private String avatarUrl;
+
+    private String city;
+
+    private String country;
+
+    private Integer gender;
+
+    private String language;
+
+    private String province;
+
+    private String openId;
 
     private String wechatNumber;
 
     private String phoneNumber;
 
-    private String userPhoto;
-
-    private String sex;
-
     private String locationId;
 
     private Location location;
 
-    public Location getLocation() {
-        return location;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getUserId() {
@@ -30,15 +40,63 @@ public class User {
     }
 
     public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+        this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getWechatNumber() {
@@ -46,7 +104,7 @@ public class User {
     }
 
     public void setWechatNumber(String wechatNumber) {
-        this.wechatNumber = wechatNumber == null ? null : wechatNumber.trim();
+        this.wechatNumber = wechatNumber;
     }
 
     public String getPhoneNumber() {
@@ -54,23 +112,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber == null ? null : phoneNumber.trim();
-    }
-
-    public String getUserPhoto() {
-        return userPhoto;
-    }
-
-    public void setUserPhoto(String userPhoto) {
-        this.userPhoto = userPhoto == null ? null : userPhoto.trim();
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.phoneNumber = phoneNumber;
     }
 
     public String getLocationId() {
@@ -78,6 +120,14 @@ public class User {
     }
 
     public void setLocationId(String locationId) {
-        this.locationId = locationId == null ? null : locationId.trim();
+        this.locationId = locationId;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

@@ -10,19 +10,23 @@
 		function checkData() {
 //			var userId = $("#userId").value;
             var userId = document.getElementById("userId").value;
-			alert(userId);
+//			alert(userId);
 			$.ajax({
 				type:"GET",
 				url:"${pageContext.request.contextPath}/user/isRegister.do?userId="+userId,
-				success:function (result) {
-					if(result == false){
+                dataType:'json',
+				success : function (isRegister) {
+				    alert(isRegister);
+					if('1' === isRegister){
+					    console.log("该用户还未注册，注册！");
 						$("#userForm").submit();
 					}else{
 					    //跳转到登录
+						console.log("该用户已注册，登录！");
                         window.location.replace("${pageContext.request.contextPath}/user/login.do?userId="+userId);
 					}
                 },
-                error:function () {
+                error : function () {
 					alert("网络错误！");
                 }
 			});
@@ -35,7 +39,7 @@ login
 	用户id:<input name="userId" id="userId" type="text"><br>
 	密码：<input name="password" type="password"><br>
 	头像:<input type="file" name="photo"><br>
-	<button name="提交" value="提交" onclick="checkData()"></button>
+	<button onclick="checkData()">提交</button>
 
 </form>
 </body>

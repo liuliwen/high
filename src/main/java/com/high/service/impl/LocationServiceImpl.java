@@ -15,14 +15,29 @@ public class LocationServiceImpl implements LocationService {
 	@Autowired
 	private LocationMapper locationMapper;
 	@Override
-	public void insertLocation(Location location) {
+	public Location insertLocation(Location location) {
 		location.setLocationId(UUID.randomUUID().toString());
 		locationMapper.insertLocation(location);
+		return location;
 	}
 
 	@Override
 	public Location findLocationById(String id) {
 		return locationMapper.findLocationById(id);
+	}
+
+	@Override
+	public void deleteLocationById(String locationId) {
+		locationMapper.deleteLocationById(locationId);
+	}
+
+	@Override
+	public boolean updateLocation(Location location) {
+		int row = locationMapper.updateLocation(location);
+		if(row==1){
+			return true;
+		}
+		return false;
 	}
 
 }

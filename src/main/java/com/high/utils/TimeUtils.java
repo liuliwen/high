@@ -10,7 +10,7 @@ public class TimeUtils {
 
 	public static String formatTimeForSolr(Date date){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-		String time = sdf.format(new Date());
+		String time = sdf.format(date);
 		return time; 
 	}
 	
@@ -20,12 +20,16 @@ public class TimeUtils {
 	 * @return
 	 * @throws ParseException
 	 */
-	public static Date paseCSTTime(String dateString) throws ParseException{
+	public static Date parseCSTTime(String dateString) throws ParseException{
 		dateString = "Sat Jul 01 08:33:55 CST 2017";
 		DateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss 'CST' yyyy", Locale.US); 
 		return df.parse(dateString);
 	}
-	
+
+	public static String formatData(Date date){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return format.format(date);
+	}
 	public static void main(String[] args) throws ParseException {
 		Date d = new Date();
 		System.out.println(d);
@@ -41,7 +45,7 @@ public class TimeUtils {
 		
 //		Date date2 = new Date("Sat Jun 03 19:53:31 CST 2017");
 		try {
-			Date time = paseCSTTime("");
+			Date time = parseCSTTime("");
 			System.out.println(time);
 		} catch (ParseException e) {
 			e.printStackTrace();

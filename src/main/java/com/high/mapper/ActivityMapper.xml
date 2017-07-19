@@ -15,7 +15,6 @@
 			max_num,
 			creator_id,
 			is_public,
-			creator_location_id,
 			distance)
 		VALUES(
 			#{activityId},
@@ -29,7 +28,6 @@
 			#{maxNum},
 			#{creatorId},
 			#{isPublic},
-			#{creatorLocationId},
 			#{distance});
 	</insert>
 	

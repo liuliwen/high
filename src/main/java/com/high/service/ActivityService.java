@@ -13,7 +13,7 @@ public interface ActivityService {
 	 * 创建活动
 	 * @param activity
 	 */
-	void createActivity(Activity activity);
+	Activity createActivity(Activity activity);
 
 	/**
 	 * 搜索活动

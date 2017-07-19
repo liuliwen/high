@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>首页</title>
 	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=6JMBZ-NUBK5-MNSI6-QJRCX-IGX6Z-RHFRI"></script>
 	<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery/jquery.js"></script>

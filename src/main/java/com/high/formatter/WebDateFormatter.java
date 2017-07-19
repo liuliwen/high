@@ -10,7 +10,7 @@ import org.springframework.format.Formatter;
 public class WebDateFormatter implements Formatter<Date> {
 
 	
-	private String datePattern="YYYY-MM-DD hh:mm:ss";
+	private String datePattern="YYYY-MM-DD hh:mm";
 	private SimpleDateFormat dateFormat;
 	
 	public WebDateFormatter(String datePattern){
@@ -26,6 +26,7 @@ public class WebDateFormatter implements Formatter<Date> {
 	@Override
 	public Date parse(String arg0, Locale arg1) throws ParseException {
 		try {
+			System.out.println("进得来不？？？？");
 			return dateFormat.parse(arg0);
 		} catch (Exception e) {
 			System.out.println("error!!!!!!!!!!!!!");

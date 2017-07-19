@@ -10,7 +10,7 @@ public interface ActivityMapper {
 	 * 向数据库中插入活动
 	 * @param activity
 	 */
-	void insertActivity(Activity activity);
+	int insertActivity(Activity activity);
 
 	/**
 	 * 查找所有的活动

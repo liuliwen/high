@@ -2,17 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.high.mapper.UserMapper">
 	<insert id="insertUser" parameterType="com.high.entity.User">
-		INSERT INTO 
-			t_user(user_id,user_name,wechat_number,phone_number,user_photo,sex,location_id) 
-			VALUES(#{userId},#{userName},#{wechatNumber},#{phoneNumber},#{userPhoto},#{sex},#{locationId})
+		INSERT INTO
+			t_user(user_id,nick_name,avatar_url,city,country,gender,LANGUAGE,province,open_id,wechat_number,phone_number,location_id)
+			VALUES(#{userId},#{nickName},#{avatarUrl},#{city},#{country},#{gender},#{language},#{province},#{openId},#{wechatNumber},#{phoneNumber},#{locationId});
 	</insert>
-	
-	<select id="selectAllUser" resultType="com.high.entity.User">
-		select * from t_user;
-	</select>
-	
-	
+
 	<select id="findUserById" resultType="com.high.entity.User" parameterType="java.lang.String">
 		SELECT * FROM t_user WHERE user_id=#{userId};
 	</select>
+
+	<select id="findUserByOpenId" resultType="com.high.entity.User" parameterType="java.lang.String">
+		select * from t_user where open_id=#{openId};
+	</select>
+	<update id="updateUserLocation" parameterType="com.high.entity.User">
+		UPDATE t_user SET location_id = #{locationId} WHERE user_id = #{userId} ;
+	</update>
 </mapper>

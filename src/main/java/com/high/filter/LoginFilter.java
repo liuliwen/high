@@ -24,17 +24,17 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse rep, FilterChain filterChain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) rep;
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		// 获得用户请求的URI
 		String path = request.getRequestURI();
 		System.out.println("拦截了！！！");
 		System.out.println("路径： " + path);
 		User user = (User) session.getAttribute("user");
-		/**
+		*//**
 		 * 如果 session中没有保存用户信息，即用户还未登陆，并且不是正在进行登录，，，则重定向到登录页面
-		 */
+		 *//*
 		boolean pass = false;
-		if(path.contains("user/login.do") || path.contains("user/isRegister.do") || path.contains("user/registerAndLogin")){
+		if(path.contains("login.do") || path.contains("isRegister.do") || path.contains("registerAndLogin.do")){
 			pass = true;
 		}
 		if(null == user && !pass){
@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
 			return;
 		}
 		//放行
-		System.out.println("放行！！！");
+		System.out.println("放行！！！");*/
 		filterChain.doFilter(request, response);
 	}
 

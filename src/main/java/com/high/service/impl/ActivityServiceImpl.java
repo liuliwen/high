@@ -39,7 +39,7 @@ public class ActivityServiceImpl implements ActivityService{
 	private ParticipateService participateService;
 //	private HttpSolrServer server = new HttpSolrServer("http://localhost:8080/solr");
 	@Override
-	public void createActivity(Activity activity) {
+	public Activity createActivity(Activity activity) {
 		// TODO 实现创建 活动的 功能
 
 		//插入活动地址，并获得地址id
@@ -48,12 +48,17 @@ public class ActivityServiceImpl implements ActivityService{
 		//是否有距离限制，若有则获得用户当前位置，并插入数据库，且获得id
 		if(activity.getDistance() != null && activity.getDistance() >0){
 			locationService.insertLocation(activity.getCreator().getLocation());
-			activity.setCreatorLocationId(activity.getCreator().getLocationId());
+//			activity.setCreatorLocationId(activity.getCreator().getLocationId());
+			activity.getCreator().setLocationId(activity.getCreator().getLocationId());
 		}
 		//将活动添加到数据库，并获得id，返回
 		activity.setActivityId(UUID.randomUUID().toString());
-		activityMapper.insertActivity(activity);
-		updateActivityIndexInSolr(activity);
+		int row = activityMapper.insertActivity(activity);
+		if(row==1){
+			updateActivityIndexInSolr(activity);
+			return  activity;
+		}
+		return null;
 	}
 
     /**
@@ -67,7 +72,7 @@ public class ActivityServiceImpl implements ActivityService{
         doc.addField("activity_comment",activity.getComment());
         doc.addField("activity_top_category",activity.getCategory().getTopCategory());
         doc.addField("activity_secondary_category",activity.getCategory().getSecondaryCategory());
-        doc.addField("activity_categoty_id",activity.getCategotyId());
+        doc.addField("activity_categoty_id",activity.getCategoryId());
         doc.addField("activity_start_time",TimeUtils.formatTimeForSolr(activity.getStartTime()));
         doc.addField("activity_location_description",activity.getActivityLocation().getLocationDescription());
         doc.addField("activity_location_id",activity.getActivityLocationId());
@@ -182,7 +187,7 @@ public class ActivityServiceImpl implements ActivityService{
 		creator.setLocation(creatorLocation);
 		activity.setCreator(creator);
         //获得分类信息
-		Category category = categoryService.findCategotyById(activity.getCategotyId());
+		Category category = categoryService.findCategotyById(activity.getCategoryId());
 		activity.setCategory(category);
         //获得参与者信息
         List<User> participates = participateService.getParticipatesByActivityId(id);

@@ -7,7 +7,14 @@
 		VALUES(#{locationId},#{longitude},#{latitude},#{locationDescription});
 	</insert>
 
+	<update id="updateLocation" parameterType="com.high.entity.Location">
+		update t_location set longitude=#{longitude},latitude=#{latitude},location_description=#{locationDescription} where location_id=#{locationId};
+	</update>
 	<select id="findLocationById" resultType="com.high.entity.Location" parameterType="java.lang.String">
 		SELECT * FROM t_location WHERE location_id= #{id};
 	</select>
+
+	<delete id="deleteLocationById" parameterType="com.high.entity.Location">
+		DELETE FROM t_location WHERE location_id=#{locationId};
+	</delete>
 </mapper>

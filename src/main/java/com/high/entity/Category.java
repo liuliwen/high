@@ -1,18 +1,17 @@
 package com.high.entity;
 
 public class Category {
-    private String id;
-
+    private String categoryId;
     private String topCategory;
 
     private String secondaryCategory;
 
-    public String getId() {
-        return id;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTopCategory() {
@@ -20,7 +19,7 @@ public class Category {
     }
 
     public void setTopCategory(String topCategory) {
-        this.topCategory = topCategory == null ? null : topCategory.trim();
+        this.topCategory = topCategory;
     }
 
     public String getSecondaryCategory() {
@@ -28,6 +27,6 @@ public class Category {
     }
 
     public void setSecondaryCategory(String secondaryCategory) {
-        this.secondaryCategory = secondaryCategory == null ? null : secondaryCategory.trim();
+        this.secondaryCategory = secondaryCategory;
     }
 }

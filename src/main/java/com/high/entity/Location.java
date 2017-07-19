@@ -14,7 +14,7 @@ public class Location {
     }
 
     public void setLocationId(String locationId) {
-        this.locationId = locationId == null ? null : locationId.trim();
+        this.locationId = locationId;
     }
 
     public Double getLongitude() {
@@ -38,6 +38,6 @@ public class Location {
     }
 
     public void setLocationDescription(String locationDescription) {
-        this.locationDescription = locationDescription == null ? null : locationDescription.trim();
+        this.locationDescription = locationDescription;
     }
 }

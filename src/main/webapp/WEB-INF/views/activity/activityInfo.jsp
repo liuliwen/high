@@ -39,7 +39,7 @@
 </c:if>
 <tr>
     <td>开始时间</td>
-    <td>${activity.startTime}</td>
+    <td>${activity.deadline}</td>
 </tr>
 <c:if test="${activity.endTime!=null}">
     <tr>

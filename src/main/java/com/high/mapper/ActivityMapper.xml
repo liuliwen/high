@@ -5,29 +5,31 @@
 	<insert id="insertActivity" parameterType="com.high.entity.Activity">
 		INSERT INTO t_activity (
 			activity_id,
-			categoty_id,
+			category_id,
 			content,
 			COMMENT,
 			start_time,
 			end_time,
-			activity_location_id,
-			min_num,
+			deadline,
+			location_id,
 			max_num,
 			creator_id,
 			is_public,
+			limit_location_id,
 			distance)
 		VALUES(
 			#{activityId},
-			#{categotyId},
+			#{categoryId},
 			#{content},
 			#{comment},
-			#{startTime},
+			#{deadline},
 			#{endTime},
-			#{activityLocationId},
-			#{minNum},
+			#{deadline},
+			#{locationId},
 			#{maxNum},
 			#{creatorId},
 			#{isPublic},
+			#{limitLocationId},
 			#{distance});
 	</insert>
 	

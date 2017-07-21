@@ -2,15 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.high.mapper.ParticipateMapper">
 
-	<select id="getParticipatesByActivityId" resultType="com.high.entity.User" parameterType="java.lang.String">
+	<resultMap id="participate" type="com.high.entity.User">
+		<id column="user_id" property="userId"></id>
+		<result column="nick_name" property="nickName"></result>
+		<result column="avatar_url" property="avatarUrl"></result>
+		<result column="city" property="city"></result>
+		<result column="country" property="country"></result>
+		<result column="gender" property="gender"></result>
+		<result column="language" property="language"></result>
+		<result column="province" property="province"></result>
+		<result column="wechat_number" property="wechatNumber"></result>
+		<result column="phone_number" property="phoneNumber"></result>
+		<result column="location_id" property="locationId"></result>
+		<association property="location" javaType="com.high.entity.Location">
+			<id column="location_id" property="locationId"></id>
+			<result column="longitude" property="longitude"></result>
+			<result column="latitude" property="latitude"></result>
+			<result column="location_description" property="locationDescription"></result>
+		</association>
+	</resultMap>
+	<select id="getParticipatesByActivityId" resultMap="participate" parameterType="java.lang.String">
 		SELECT
 			t_user.user_id,
-			user_name,
+			nick_name,
+			avatar_url,
+			city,
+			country,
+			gender,
+			language,
+			province,
 			wechat_number,
 			phone_number,
-			user_photo,
-			sex,
-			t_user.location_id,
+			t_user.location_id
 			longitude,
 			latitude,
 			location_description

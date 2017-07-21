@@ -11,6 +11,6 @@
 	</select>
 
 	<select id="findCategotyById" resultType="com.high.entity.Category" parameterType="java.lang.String">
-		SELECT * FROM t_category WHERE id=#{id};
+		SELECT * FROM t_category WHERE category_id=#{categoryId};
 	</select>
 </mapper>

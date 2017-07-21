@@ -127,11 +127,11 @@
 	}
 
 	function checkData() {
-		// 		var a = $("#startTime");
+		// 		var a = $("#deadline");
 		// 		var time =a.val();
 		// 		alert(time);
-		document.getElementById("startTime").value = $("#startTime").val();
-		document.getElementById("endTime").value = $("#startTime").val();
+		document.getElementById("deadline").value = $("#deadline").val();
+		document.getElementById("endTime").value = $("#deadline").val();
 		// 		document.getElementById
 	}
 </script>
@@ -183,16 +183,16 @@
 				<td></td>
 			</tr>
 			<tr>
-				<!-- 用户选择，再选择日期，然后利用给 startTime 赋值。 利用js的时间插件 -->
+				<!-- 用户选择，再选择日期，然后deadlineTime 赋值。 利用js的时间插件 -->
 				<td>开始时间</td>
-				<td><input id="startTime" name="startTime"
+				<td><input id="deadline" name="deadline"
 					onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"></td>
 				<!-- 				<td><input type="text" ></td> -->
 				<!-- 				<td><input type="text" ></td> -->
-				<!-- 				<td><input type="hidden" name="startTime" ></td> -->
+				<!-- 				<td><input type="hidden" nadeadlineTime" ></td> -->
 			</tr>
 			<tr>
-				<!-- 用户选择，再选择日期，然后利用给 startTime 赋值 -->
+				<!-- 用户选择，再选择日期，然后deadlineTime 赋值 -->
 				<td>结束时间</td>
 				<td><input name="endTime"
 					onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"></td>

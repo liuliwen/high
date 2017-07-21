@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.high.entity.SearchActivityQueryModel;
 import com.high.entity.SearchActivityResultModel;
 import com.high.service.ActivityService;
-import com.high.service.impl.ActivityServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/applicationContext.xml")
@@ -28,7 +27,7 @@ public class ActSerTest {
 		queryModel.setSecCategory("三国杀");
 		queryModel.setQuery("杀");
 		Date date = new Date();
-		queryModel.setStartTime(date);
+		queryModel.setDeadline(date);
 		SearchActivityResultModel resultModel = activityService.searchActivity(queryModel);
 		System.out.println(resultModel.getRecordCount());
 		System.out.println(resultModel.getActivityList());

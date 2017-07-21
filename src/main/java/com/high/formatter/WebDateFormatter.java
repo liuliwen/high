@@ -10,7 +10,7 @@ import org.springframework.format.Formatter;
 public class WebDateFormatter implements Formatter<Date> {
 
 	
-	private String datePattern="YYYY-MM-DD hh:mm";
+	private String datePattern="yyyy-MM-dd HH:mm:ss";
 	private SimpleDateFormat dateFormat;
 	
 	public WebDateFormatter(String datePattern){

@@ -44,17 +44,19 @@ public class ActivityServiceImpl implements ActivityService{
 
 		//插入活动地址，并获得地址id
 		locationService.insertLocation(activity.getActivityLocation());
-		activity.setActivityLocationId(activity.getActivityLocation().getLocationId());
+		activity.setLocationId(activity.getActivityLocation().getLocationId());
+
 		//是否有距离限制，若有则获得用户当前位置，并插入数据库，且获得id
 		if(activity.getDistance() != null && activity.getDistance() >0){
-			locationService.insertLocation(activity.getCreator().getLocation());
-//			activity.setCreatorLocationId(activity.getCreator().getLocationId());
-			activity.getCreator().setLocationId(activity.getCreator().getLocationId());
+			User findUser = userService.findUserById(activity.getCreatorId());
+			activity.setLimitLocationId(findUser.getLocationId());
 		}
 		//将活动添加到数据库，并获得id，返回
 		activity.setActivityId(UUID.randomUUID().toString());
 		int row = activityMapper.insertActivity(activity);
 		if(row==1){
+			Category category = categoryService.findCategotyById(activity.getCategoryId());
+			activity.setCategory(category);
 			updateActivityIndexInSolr(activity);
 			return  activity;
 		}
@@ -72,10 +74,10 @@ public class ActivityServiceImpl implements ActivityService{
         doc.addField("activity_comment",activity.getComment());
         doc.addField("activity_top_category",activity.getCategory().getTopCategory());
         doc.addField("activity_secondary_category",activity.getCategory().getSecondaryCategory());
-        doc.addField("activity_categoty_id",activity.getCategoryId());
-        doc.addField("activity_start_time",TimeUtils.formatTimeForSolr(activity.getStartTime()));
+        doc.addField("activity_category_id",activity.getCategoryId());
+        doc.addField("activity_deadline",TimeUtils.formatTimeForSolr(activity.getDeadline()));
         doc.addField("activity_location_description",activity.getActivityLocation().getLocationDescription());
-        doc.addField("activity_location_id",activity.getActivityLocationId());
+        doc.addField("activity_location_id",activity.getLocationId());
         doc.addField("activity_location_position",activity.getActivityLocation().getLongitude()+" " +activity.getActivityLocation().getLatitude());
 
         try {
@@ -106,10 +108,10 @@ public class ActivityServiceImpl implements ActivityService{
         Location location = queryModel.getActivityLocation();
 		setLocationQuery(location,query,"10");
 
-		if(queryModel.getStartTime() != null){
+		if(queryModel.getDeadline() != null){
 			// TODO 这块的逻辑是什么？？？过滤时输入的是什么 时间？？？又需要查询些什么？？？
 			// 并将本地时间改为 MTS时间
-			query.addFilterQuery("activity_start_time: ["+TimeUtils.formatTimeForSolr(queryModel.getStartTime())+" TO *]" );
+			query.addFilterQuery("activity_deadline: ["+TimeUtils.formatTimeForSolr(queryModel.getDeadline())+" TO *]" );
 			
 		}
 		if(queryModel.getPage() ==null){
@@ -179,7 +181,7 @@ public class ActivityServiceImpl implements ActivityService{
 	    //通过活动id查找活动
 		Activity activity = activityMapper.findActivityById(id);
         //获得相应的位置信息
-		Location activityLocation = locationService.findLocationById(activity.getActivityLocationId());
+		Location activityLocation = locationService.findLocationById(activity.getLocationId());
 		activity.setActivityLocation(activityLocation);
         //活动创建者信息
         User creator = userService.findUserById(activity.getCreatorId());

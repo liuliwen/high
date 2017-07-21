@@ -20,10 +20,12 @@ import java.util.Map;
 public class FormIdController {
     @Autowired
     private FormIdService formIdService;
+
     @RequestMapping("/saveFormId.do")
     public @ResponseBody Map<String,Object> saveFormId(String formId){
         Map<String, Object> map = new HashMap<String, Object>();
-        if(formId!=null){
+        System.out.println(formId);
+        if(formId!=null && !"undefined".equals(formId)){
             System.out.println(formId);
             FormId form = new FormId();
             form.setFormId(formId);

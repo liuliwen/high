@@ -63,9 +63,11 @@ public class UserServiceImpl implements UserService {
 		location.setLocationId(locationId);
 		if(locationId !=null){
 			locationService.updateLocation(location);//删除原有的位置信息
-		}//给位置表里面添加一个位置信息，并更新用户的位置信息
-		/*Location location = locationService.insertLocation(user.getLocation());
-		user.setLocationId(location.getLocationId());*/
+		}else{
+			//给位置表里面添加一个位置信息，并更新用户的位置信息
+			location = locationService.insertLocation(location);
+		}
+		user.setLocationId(location.getLocationId());
 		return userMapper.updateUserLocation(user);
 
 	}

@@ -12,7 +12,7 @@ activities
 <c:forEach items="${activities.activityList }" var="activity">
 	${activity.comment}
 	${activity.content}
-	${activity.startTime}
+	${activity.deadline}
 </c:forEach>
 </body>
 </html>

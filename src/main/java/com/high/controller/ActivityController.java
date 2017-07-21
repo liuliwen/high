@@ -2,26 +2,15 @@ package com.high.controller;
 
 import com.high.entity.*;
 import com.high.service.ParticipateService;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.DataBinder;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import com.high.service.ActivityService;
-import com.high.validator.ActivityValidator;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -41,14 +30,38 @@ public class ActivityController {
 	 */
 	@RequestMapping("/searchActivity.do")
 	public @ResponseBody SearchActivityResultModel searchActivity(@RequestBody SearchActivityQueryModel queryModel){
-		queryModel.setStartTime(new Date());
+		queryModel.setDeadline(new Date());
 		return activityService.searchActivity(queryModel);
 	}
 	@RequestMapping("/createActivity.do")
-	public @ResponseBody Map<String,Object> createActivity(Activity activity,Double longtitude,Double latitude,String locationDescription){
+	public @ResponseBody Map<String,Object> createActivity(String content,
+														   String comment,
+														   Date startTime,
+														   Date endTime,
+														   Date deadline,
+														   Integer maxNum,
+														   Boolean isPublic,
+														   Double distance,
+														   String creatorId,
+														   Double longitude,
+														   Double latitude,
+														   String locationDescription){
+		Activity activity = new Activity();
+		Random random = new Random();
+		int categoryId = random.nextInt(13) + 1;
+		activity.setCategoryId(categoryId+"");
+		activity.setContent(content);
+		activity.setComment(comment);
+		activity.setStartTime(startTime);
+		activity.setEndTime(endTime);
+		activity.setDeadline(deadline);
+		activity.setMaxNum(maxNum);
+		activity.setPublic(isPublic);
+		activity.setDistance(distance);
+		activity.setCreatorId(creatorId);
 		Location location = new Location();
 		location.setLatitude(latitude);
-		location.setLongitude(longtitude);
+		location.setLongitude(longitude);
 		location.setLocationDescription(locationDescription);
 		activity.setActivityLocation(location);
 		Activity resultActivity = activityService.createActivity(activity);
@@ -59,6 +72,19 @@ public class ActivityController {
 		}else{
 			map.put("code",500);
 		}
+		return map;
+	}
+
+	@RequestMapping("/getActivityInfoById.do")
+	public @ResponseBody Map<String,Object> getActivityInfoById(String activityId){
+		Activity activity = activityService.findActivityById(activityId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(activity!=null){
+			map.put("code",200);
+			map.put("activity",activity);
+			return map;
+		}
+		map.put("code",500);
 		return map;
 	}
 //	/**

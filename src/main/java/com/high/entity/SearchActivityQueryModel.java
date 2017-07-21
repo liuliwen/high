@@ -5,13 +5,13 @@ import java.util.Date;
 public class SearchActivityQueryModel {
 
 	//每页显示多少条
-	public static Integer NUM_ACTIVITY_PER_PAGE=5;
+	public static Integer NUM_ACTIVITY_PER_PAGE=15;
 	
 	private String query;
 	private String topCategory;
 	private String secCategory;
 	private Location activityLocation;
-	private Date startTime;
+	private Date deadline;
 	private Integer page;
 	public String getQuery() {
 		return query;
@@ -37,11 +37,11 @@ public class SearchActivityQueryModel {
 	public void setActivityLocation(Location activityLocation) {
 		this.activityLocation = activityLocation;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getDeadline() {
+		return deadline;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
 	}
 	public Integer getPage() {
 		return page;

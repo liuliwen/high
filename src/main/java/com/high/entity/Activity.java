@@ -17,7 +17,7 @@ public class Activity {
 
     private Date endTime;
 
-    private String activityLocationId;
+    private String locationId;
 
     private Integer maxNum;
 
@@ -33,6 +33,24 @@ public class Activity {
     private User creator;
     private List<User> participate;
     private Category category;
+    private String limitLocationId;
+    private Location limitLocation;
+
+    public String getLimitLocationId() {
+        return limitLocationId;
+    }
+
+    public void setLimitLocationId(String limitLocationId) {
+        this.limitLocationId = limitLocationId;
+    }
+
+    public Location getLimitLocation() {
+        return limitLocation;
+    }
+
+    public void setLimitLocation(Location limitLocation) {
+        this.limitLocation = limitLocation;
+    }
 
     public Date getDeadline() {
         return deadline;
@@ -90,12 +108,12 @@ public class Activity {
         this.endTime = endTime;
     }
 
-    public String getActivityLocationId() {
-        return activityLocationId;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setActivityLocationId(String activityLocationId) {
-        this.activityLocationId = activityLocationId;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
     public Integer getMaxNum() {

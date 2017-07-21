@@ -46,7 +46,7 @@
 			<set>
 				<bean class="com.high.formatter.WebDateFormatter">
 <!-- 					<constructor-arg type="java.lang.String" value="MM/DD/YYYY hh:mm:ss"/> -->
-						<constructor-arg type="java.lang.String" value="YYYY-MM-DD hh:mm"/>
+						<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
 				</bean>
 			</set>
 		</property>

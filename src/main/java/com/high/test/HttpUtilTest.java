@@ -62,7 +62,7 @@ public class HttpUtilTest {
         keyWord2.put("color","#9b9b9b");
 
         JSONObject keyWord3 = new JSONObject();
-        keyWord3.put("value", TimeUtils.formatData(new Date()));
+        keyWord3.put("value", TimeUtils.formatDate(new Date()));
         keyWord3.put("color","#9b9b9b");
 
         JSONObject keyWord4 = new JSONObject();

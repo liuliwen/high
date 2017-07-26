@@ -5,4 +5,17 @@
 	<insert id="insertFormId" parameterType="com.high.entity.FormId">
 		INSERT INTO t_form_ids VALUES (#{formId},#{createDate});
 	</insert>
+
+	<delete id="deleteOutTimeFormId" parameterType="java.lang.String">
+		delete from t_form_ids where #{date}> create_date
+	</delete>
+
+	<select id="getDelayingFormId" resultType="com.high.entity.FormId">
+		select * from t_form_ids where create_date=(SELECT MIN(create_date) FROM highdemo.t_form_ids) limit 1;
+	</select>
+
+	<delete id="deleteFormIdById" parameterType="java.lang.String">
+		DELETE FROM t_form_ids where form_id=#{formId}
+	</delete>
+
 </mapper>

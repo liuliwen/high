@@ -161,7 +161,7 @@ public class ActivityServiceImpl implements ActivityService{
 	public SearchActivityResultModel defaultSearchActivity(Location location) {
 		SolrQuery query = new SolrQuery();
 		query.setQuery("*:*");
-        setLocationQuery(location,query,"10");
+        setLocationQuery(location,query,"100");
 		Date date = new Date();
 		query.addFilterQuery("activity_start_time: ["+TimeUtils.formatTimeForSolr(date)+" TO *]" );
 		query.setStart(0);
@@ -230,8 +230,27 @@ public class ActivityServiceImpl implements ActivityService{
 			activity.setActivityId(doc.get("id").toString());
 			activity.setComment(doc.get("activity_comment").toString());
 			activity.setContent(doc.get("activity_content").toString());
-			
+
+			Category category = new Category();
+			category.setTopCategory(doc.get("activity_top_category").toString());
+			category.setSecondaryCategory(doc.get("activity_secondary_category").toString());
+			category.setCategoryId(doc.get("activity_category_id").toString());
+			activity.setCategoryId(category.getCategoryId());
+			activity.setCategory(category);
+
+			Location location = new Location();
+			location.setLocationDescription(doc.get("activity_location_description").toString());
+			String position = doc.get("activity_location_position").toString();
+			String[] strs = position.split(" ");
+			if(strs!= null && strs.length==2){
+				Double longitude=Double.valueOf(strs[0]);
+				Double latitude=Double.valueOf(strs[1]);
+				location.setLongitude(longitude);
+				location.setLatitude(latitude);
+			}
+			activity.setActivityLocation(location);
 			activity.setStartTime((Date)doc.get("activity_start_time"));
+			activity.setDeadline((Date)doc.get("activity_deadline"));
 			activitys.add(activity);
 		}
 		SearchActivityResultModel resultModel = new SearchActivityResultModel();

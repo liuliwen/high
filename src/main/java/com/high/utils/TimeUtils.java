@@ -26,7 +26,7 @@ public class TimeUtils {
 		return df.parse(dateString);
 	}
 
-	public static String formatData(Date date){
+	public static String formatDate(Date date){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return format.format(date);
 	}

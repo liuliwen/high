@@ -4,7 +4,6 @@ import com.high.entity.Activity;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * Created by llw on 2017/7/5.
@@ -87,7 +86,7 @@ public class WeChatUtils {
         keyWord2.put("color","#9b9b9b");
 
         JSONObject keyWord3 = new JSONObject();
-        keyWord3.put("value", TimeUtils.formatData(activity.getStartTime()));
+        keyWord3.put("value", TimeUtils.formatDate(activity.getStartTime()));
         keyWord3.put("color","#9b9b9b");
 
         JSONObject keyWord4 = new JSONObject();
